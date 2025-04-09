@@ -1,4 +1,6 @@
 import { useState } from "react";
+import './TodoList.css';
+
 
 export default function TodoList() {
 
@@ -16,14 +18,8 @@ export default function TodoList() {
     return (
         <>  <div className="TodoList">
 
-            <div>
-                <input type="text"
-                    placeholder="Add a task"
-                    value={newTodo}
-                    onChange={updateTask} />
 
-                <button onClick={addNewTask}>Add Task</button>
-
+            <div className="taskList">
                 <h4>To Do List</h4>
                 <ul>
                     {todos.map((todo) => (
@@ -31,8 +27,20 @@ export default function TodoList() {
                     ))}
                 </ul>
             </div>
+            <div className="inputText">
+                <input type="text"
+                    placeholder="Add a task"
+                    value={newTodo}
+                    onChange={updateTask} />
+            </div>
+            <div className="todoButton">
+                <button onClick={addNewTask}>Add Task</button>
+            </div>
+
 
         </div>
+
+
 
         </>
     )
