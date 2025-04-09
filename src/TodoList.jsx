@@ -3,18 +3,27 @@ import { useState } from "react";
 export default function TodoList() {
 
     let [todos, setTodo] = useState(["Sample Task"])
-    return (
-        <>
-            <div>
+    let [newTodo, setNewTodo] = useState("");
 
-                <input placeholder="Add a task" />
-                <br />
-                <br />
-                <button>Add Task</button>
-                <br />
-                <br />
-                <br />
-                <hr />
+    let addNewTask = () => {
+        setTodo([...todos, newTodo])
+    };
+
+    let updateTask = (event) => {
+        setNewTodo(event.target.value)
+
+    };
+    return (
+        <>  <div className="TodoList">
+
+            <div>
+                <input type="text"
+                    placeholder="Add a task"
+                    value={newTodo}
+                    onChange={updateTask} />
+
+                <button onClick={addNewTask}>Add Task</button>
+
                 <h4>To Do List</h4>
                 <ul>
                     {todos.map((todo) => (
@@ -22,6 +31,8 @@ export default function TodoList() {
                     ))}
                 </ul>
             </div>
+
+        </div>
 
         </>
     )
